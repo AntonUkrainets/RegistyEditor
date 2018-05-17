@@ -1,0 +1,92 @@
+﻿<Window x:Class="RegistryEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RegistryEditor"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <GridSplitter Grid.Row="1" Grid.Column="1" />
+
+        <Menu x:Name="menu" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="0"
+              Margin="10" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="1"
+              Background="White">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Выход"/>
+            </MenuItem>
+            <MenuItem Header="Правка">
+                <MenuItem Header="Создать">
+                    <MenuItem Header="Раздел" 
+                              x:Name="CreateSelection" 
+                              Click="CreateFolder_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Строковый параметр" 
+                              x:Name="CreateStringValue"
+                              Click="CreateStringValue_Click"/>
+                    <MenuItem Header="Двоичный параметр" 
+                              x:Name="CreateBinaryValue" 
+                              Click="CreateBinaryValue_Click"/>
+                    <MenuItem Header="Параметр DWORD (32-бита)" 
+                              x:Name="CreateDWORD32Value" 
+                              Click="CreateDWORD32Value_Click"/>
+                    <MenuItem Header="Параметр QWORD (64-бита)" 
+                              x:Name="CreateDWORD64Value" 
+                              Click="CreateDWORD64Value_Click"/>
+                    <MenuItem Header="Мультистроковый параметр" 
+                              x:Name="CreateMultiString" 
+                              Click="CreateMultiString_Click"/>
+                    <MenuItem Header="Расширяемый строковый параметр" 
+                              x:Name="CreateExpandString" 
+                              Click="CreateExpandString_Click"/>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="Удалить" 
+                          x:Name="DeleteButton" 
+                          Click="DeleteButton_Click"/>
+                <MenuItem Header="Изменить" 
+                          x:Name="EditButton" 
+                          Click="EditButton_Click"/>
+            </MenuItem>
+        </Menu>
+        <TreeView x:Name="treeView" 
+                  Grid.Row="1" 
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch" 
+                  Margin="0,0,10,0">
+            <TreeViewItem Header="Компьютер"/>
+        </TreeView>
+        <ListView x:Name="listView" 
+                  Grid.Column="2" 
+                  HorizontalAlignment="Stretch" 
+                  HorizontalContentAlignment="Center"
+                  Grid.Row="1" 
+                  VerticalAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Имя" 
+                                        Width="100" 
+                                        DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Тип" 
+                                        Width="100"  
+                                        DisplayMemberBinding="{Binding Type}"/>
+                        <GridViewColumn Header="Значение" 
+                                        Width="100"  
+                                        DisplayMemberBinding="{Binding Value}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

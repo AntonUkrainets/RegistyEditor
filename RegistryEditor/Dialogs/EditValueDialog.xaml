@@ -1,0 +1,20 @@
+﻿<Window x:Class="RegistryEditor.Dialogs.EditValueDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RegistryEditor.Dialogs"
+        mc:Ignorable="d"
+        Title="EditValueDialog" 
+        Height="80" 
+        Width="300" 
+        WindowStartupLocation="CenterScreen">
+    <StackPanel Orientation="Horizontal">
+        <Label Content="New value:"/>
+        <TextBox x:Name="tbValue"
+                 Width="125"/>
+        <Button x:Name="ChangeButton" 
+                Content="Change"
+                Click="ChangeButton_Click"/>
+    </StackPanel>
+</Window>
